@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MyShop</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f1f3f6;
+  color: #333;
+}
+
+section {
+  padding: 40px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 28px;
+  margin-bottom: 25px;
+}
+
+.top-strip {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 8px;
+  font-size: 14px;
+}
+
+nav {
+  background-color: #ff6b00;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  padding: 12px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.logo {
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.search {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 20px;
+  width: 300px;
+  max-width: 100%;
+}
+
+.menu a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  padding: 5px 0;
+  display: inline-block;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+.menu a:hover {
+  border-bottom: 3px solid white;
+  transform: translateY(-2px);
+}
+
+.categories {
+  background-color: white;
+  text-align: center;
+  padding: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.categories a {
+  display: inline-block;
+  margin: 5px 8px;
+  padding: 6px 16px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #333;
+  transition: 0.3s;
+}
+
+.categories a:hover {
+  background-color: #ff6b00;
+  color: white;
+  border-color: #ff6b00;
+}
+
+.banner {
+  background-color: #ff6b00;
+  color: white;
+  text-align: center;
+  padding: 70px 20px;
+  animation: fadeIn 2s;
+}
+
+.banner h1 {
+  font-size: 44px;
+  margin-bottom: 10px;
+}
+
+.banner p {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.banner-btn {
+  display: inline-block;
+  background-color: white;
+  color: #ff6b00;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: 0.3s;
+  animation: pulse 1.5s infinite;
+}
+
+.banner-btn:hover {
+  background-color: #222;
+  color: white;
+}
+
+.promos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.promo {
+  flex: 1;
+  min-width: 250px;
+  padding: 30px 20px;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.promo:hover {
+  transform: scale(1.05);
+}
+
+.promo h3 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.blue   { background-color: #2874f0; }
+.green  { background-color: #2e9e5b; }
+.purple { background-color: #7b3fe4; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.card {
+  background-color: white;
+  width: 250px;
+  border-radius: 10px;
+  padding: 15px;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #e53935;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.image {
+  height: 150px;
+  background-color: #f1f3f6;
+  border-radius: 8px;
+  font-size: 70px;
+  text-align: center;
+  line-height: 150px;
+  margin-bottom: 10px;
+  transition: 0.3s;
+}
+
+.card:hover .image {
+  transform: scale(1.1);
+}
+
+.category {
+  font-size: 12px;
+  color: #888;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin: 3px 0;
+}
+
+.desc {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 8px;
+}
+
+.rating {
+  color: #f5a623;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.rating span {
+  color: #888;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.old-price {
+  font-size: 14px;
+  color: #888;
+  text-decoration: line-through;
+  margin-left: 6px;
+  font-weight: normal;
+}
+
+.off {
+  color: #2e9e5b;
+  font-size: 14px;
+  margin-left: 6px;
+}
+
+.buttons {
+  margin-top: 12px;
+  display: flex;
+  gap: 8px;
+}
+
+.btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+  color: white;
+  transition: 0.3s;
+}
+
+.cart { background-color: #ff9f00; }
+.buy  { background-color: #ff6b00; }
+
+.btn:hover {
+  background-color: #222;
+}
+
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+@media (max-width: 600px) {
+  .banner h1 {
+    font-size: 30px;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="top-strip">🚚 Free delivery on orders above ₹499 | Use code WELCOME10</div>
+
+<nav>
+  <a class="logo" href="#top">🛒 MyShop</a>
+  <input class="search" type="text" placeholder="Search for products...">
+  <div class="menu">
+    <a href="#deals">Deals</a>
+    <a href="#products">Products</a>
+    <a href="#">Wishlist ❤️</a>
+    <a href="#">Cart 🛍️ (0)</a>
+  </div>
+</nav>
+
+<div class="categories">
+  <a href="#">All</a>
+  <a href="#">Electronics</a>
+  <a href="#">Fashion</a>
+  <a href="#">Books</a>
+  <a href="#">Home</a>
+  <a href="#">Sports</a>
+</div>
+
+<div class="banner" id="top">
+  <h1>Mega Sale is Live!</h1>
+  <p>Up to 60% OFF on electronics, fashion and more</p>
+  <a class="banner-btn" href="#products">Shop Now</a>
+</div>
+
+<section id="deals">
+  <div class="promos">
+    <div class="promo blue">
+      <h3>Student Offer</h3>
+      <p>Extra 10% OFF on laptops</p>
+    </div>
+    <div class="promo green">
+      <h3>Free Delivery</h3>
+      <p>On orders above ₹499</p>
+    </div>
+    <div class="promo purple">
+      <h3>New Arrivals</h3>
+      <p>Fresh styles every week</p>
+    </div>
+  </div>
+</section>
+
+<section id="products">
+  <h2>Featured Products</h2>
+
+  <div class="products">
+
+    <div class="card">
+      <span class="badge">40% OFF</span>
+      <div class="image">🎧</div>
+      <p class="category">Electronics</p>
+      <h3>Wireless Headphones</h3>
+      <p class="desc">Bluetooth headphones with deep bass and 20 hours of battery.</p>
+      <p class="rating">★★★★☆ <span>(4.2)</span></p>
+      <p class="price">₹1,499 <span class="old-price">₹2,499</span> <span class="off">40% off</span></p>
+      <div class="buttons">
+        <button class="btn cart">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">25% OFF</span>
+      <div class="image">⌚</div>
+      <p class="category">Electronics</p>
+      <h3>Smart Watch</h3>
+      <p class="desc">Tracks steps, heart rate and sleep. Water resistant.</p>
+      <p class="rating">★★★★★ <span>(4.8)</span></p>
+      <p class="price">₹2,999 <span class="old-price">₹3,999</span> <span class="off">25% off</span></p>
+      <div class="buttons">
+        <button class="btn cart">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">50% OFF</span>
+      <div class="image">👟</div>
+      <p class="category">Fashion</p>
+      <h3>Running Shoes</h3>
+      <p class="desc">Light and comfortable shoes for running and daily use.</p>
+      <p class="rating">★★★★☆ <span>(4.0)</span></p>
+      <p class="price">₹999 <span class="old-price">₹1,999</span> <span class="off">50% off</span></p>
+      <div class="buttons">
+        <button class="btn cart">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">30% OFF</span>
+      <div class="image">🎒</div>
+      <p class="category">Fashion</p>
+      <h3>College Backpack</h3>
+      <p class="desc">Spacious bag with a laptop pocket and strong zips.</p>
+      <p class="rating">★★★★☆ <span>(4.3)</span></p>
+      <p class="price">₹699 <span class="old-price">₹999</span> <span class="off">30% off</span></p>
+      <div class="buttons">
+        <button class="btn cart">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">20% OFF</span>
+      <div class="image">📘</div>
+      <p class="category">Books</p>
+      <h3>Python Programming Book</h3>
+      <p class="desc">Easy guide for beginners with simple examples.</p>
+      <p class="rating">★★★★★ <span>(4.7)</span></p>
+      <p class="price">₹399 <span class="old-price">₹499</span> <span class="off">20% off</span></p>
+      <div class="buttons">
+        <button class="btn cart">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="badge">35% OFF</span>
+      <div class="image">🏏</div>
+      <p class="category">Sports</p>
+      <h3>Cricket Bat</h3>
+      <p class="desc">Strong wooden bat, good for practice and tennis ball matches.</p>
+      <p class="rating">★★★☆☆ <span>(3.9)</span></p>
+      <p class="price">₹1,299 <span class="old-price">₹1,999</span> <span class="off">35% off</span></p>
+      <div class="buttons">
+        <button class="btn cart">Add to Cart</button>
+        <button class="btn buy">Buy Now</button>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 MyShop. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

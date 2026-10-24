@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Portfolio</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+h2 {
+  text-align: center;
+  font-size: 32px;
+  margin-bottom: 30px;
+  color: #4b2fd6;
+}
+
+nav {
+  background-color: #4b2fd6;
+  position: sticky;
+  top: 0;
+  padding: 15px;
+  text-align: center;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  padding: 5px 0;
+  display: inline-block;
+  border-bottom: 3px solid transparent;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  border-bottom: 3px solid #ffd54f;
+  transform: translateY(-2px);
+}
+
+#home {
+  text-align: center;
+  padding: 100px 20px;
+  background-color: #e8e4ff;
+  max-width: 100%;
+}
+
+#home h1 {
+  font-size: 48px;
+  animation: fadeIn 2s;
+}
+
+#home p {
+  font-size: 20px;
+  margin: 15px 0 25px;
+  animation: fadeIn 3s;
+}
+
+.photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #4b2fd6;
+  color: white;
+  font-size: 50px;
+  line-height: 150px;
+  margin: 0 auto 20px;
+  animation: bounce 2s infinite;
+}
+
+.button {
+  display: inline-block;
+  background-color: #4b2fd6;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 25px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: #ff6b5b;
+  transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes bounce {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes grow {
+  from { width: 0; }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.box {
+  background-color: white;
+  width: 280px;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  transition: 0.3s;
+}
+
+.box:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.box h3 {
+  margin-bottom: 8px;
+  color: #4b2fd6;
+}
+
+.skill {
+  margin-bottom: 15px;
+}
+
+.bar {
+  background-color: #ddd;
+  border-radius: 10px;
+  height: 15px;
+}
+
+.bar div {
+  background-color: #4b2fd6;
+  height: 15px;
+  border-radius: 10px;
+  animation: grow 2s;
+}
+
+.list-item {
+  background-color: white;
+  border-left: 6px solid #4b2fd6;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  transition: 0.3s;
+}
+
+.list-item:hover {
+  margin-left: 15px;
+}
+
+#contact {
+  text-align: center;
+}
+
+#contact p {
+  margin-bottom: 10px;
+}
+
+footer {
+  background-color: #4b2fd6;
+  color: white;
+  text-align: center;
+  padding: 15px;
+}
+
+@media (max-width: 600px) {
+  #home h1 {
+    font-size: 32px;
+  }
+
+  nav a {
+    margin: 0 6px;
+    font-size: 14px;
+  }
+
+  .box {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#education">Education</a>
+  <a href="#skills">Skills</a>
+  <a href="#projects">Projects</a>
+  <a href="#hobbies">Hobbies</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#resume">Resume</a>
+  <a href="#contact">Contact</a>
+</nav>
+
+<section id="home">
+  <div class="photo">RC</div>
+  <h1>Hi, I am Rakesh Chalasani</h1>
+  <p>B.Tech 1st Year Student | CSE(AI&ML) | NRI UNIVERSITY</p>
+  <a class="button" href="#projects">View My Projects</a>
+</section>
+
+<section id="education">
+  <h2>Education</h2>
+
+  <div class="list-item">
+    <h3>B.Tech in CSE(AI&ML) Branch</h3>
+    <p>NRI UNIVERSITY| 2026 - Present</p>
+  </div>
+
+  <div class="list-item">
+    <h3>Intermediate (MPC)</h3>
+    <p> NARAYANA | 2024 - 2026 | 93%</p>
+  </div>
+
+  <div class="list-item">
+    <h3>Class 10 (SSC)</h3>
+    <p>RAVINDRA BHARATHI | 2024 | GPA 9.5</p>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>Technical Skills</h2>
+
+  <div class="skill">
+    <p>HTML - 80%</p>
+    <div class="bar"><div style="width: 80%;"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>CSS - 70%</p>
+    <div class="bar"><div style="width: 70%;"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>C Programming - 65%</p>
+    <div class="bar"><div style="width: 65%;"></div></div>
+  </div>
+
+  <div class="skill">
+    <p>Python - 55%</p>
+    <div class="bar"><div style="width: 55%;"></div></div>
+  </div>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+
+  <div class="container">
+    <div class="box">
+      <h3>Portfolio Website</h3>
+      <p>My personal website made using HTML and CSS.</p>
+    </div>
+
+    <div class="box">
+      <h3>Calculator</h3>
+      <p>A simple calculator program written in Python.</p>
+    </div>
+
+    <div class="box">
+      <h3>Marks Manager</h3>
+      <p>A Python program that stores student marks and finds the average.</p>
+    </div>
+  </div>
+</section>
+
+<section id="hobbies">
+  <h2>Hobbies</h2>
+
+  <div class="container">
+    <div class="box"><h3>🎮 Gaming</h3></div>
+    <div class="box"><h3>🎵 Music</h3></div>
+    <div class="box"><h3>🏏 Cricket</h3></div>
+    <div class="box"><h3>📚 Reading</h3></div>
+  </div>
+</section>
+
+<section id="achievements">
+  <h2>Achievements</h2>
+
+  <div class="list-item">
+    <p>School topper in 9th class - [2023]</p>
+  </div>
+
+  <div class="list-item">
+    <p>Completed online Python course on Youtube - 2026</p>
+  </div>
+
+  <div class="list-item">
+    <p>Participated in Science expo - [2023]</p>
+  </div>
+</section>
+
+<section id="resume">
+  <h2>Resume</h2>
+
+  <div class="box" style="width: 100%;">
+    <h3>Objective</h3>
+    <p>First-year B.Tech student looking for internships to use my programming skills.</p>
+    <br>
+    <h3>Education</h3>
+    <p>B.Tech in CSE(AI&ML), NRI UNIVERSITY (2026 - Present)</p>
+    <br>
+    <h3>Skills</h3>
+    <p>HTML, CSS, C, Python</p>
+    <br>
+    <a class="button" href="resume.pdf" download>Download Resume</a>
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Me</h2>
+  <p>Email: rakeshchalasani407@gmail.com</p>
+  <p>Phone: +91 7396220240</p>
+  <p>Location: kondapalli, India</p>
+  <br>
+  <a class="button" href="rakeshchalasani407@gmail.com">Send Email</a>
+  <a class="button" href="https://github.com/">GitHub</a>
+  <a class="button" href="https://www.linkedin.com/">LinkedIn</a>
+</section>
+
+<footer>
+  <p>&copy; 2026 Your Name. All rights reserved.</p>
+</footer>
+
+</body>
+</html>

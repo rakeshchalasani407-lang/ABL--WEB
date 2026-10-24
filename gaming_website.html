@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ArenaX Esports</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Verdana, sans-serif;
+  background-color: #0b0c10;
+  color: #d8d8d8;
+  line-height: 1.6;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 220px;
+  height: 100%;
+  background-color: #14151c;
+  border-right: 2px solid #ffb400;
+  padding: 25px 15px;
+}
+
+.brand {
+  display: block;
+  color: #ffb400;
+  font-size: 26px;
+  font-weight: bold;
+  text-decoration: none;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.sidebar a.link {
+  display: block;
+  color: #d8d8d8;
+  text-decoration: none;
+  padding: 12px 15px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+  border-left: 4px solid transparent;
+  transition: 0.3s;
+}
+
+.sidebar a.link:hover {
+  background-color: #23242e;
+  color: #ffb400;
+  border-left: 4px solid #ffb400;
+  padding-left: 25px;
+}
+
+.main {
+  margin-left: 220px;
+}
+
+section {
+  padding: 45px 30px;
+}
+
+h2 {
+  font-size: 28px;
+  color: white;
+  margin-bottom: 25px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid #ffb400;
+  display: inline-block;
+}
+
+.live-banner {
+  background-color: #1d1020;
+  padding: 60px 30px;
+  text-align: center;
+  border-bottom: 3px solid #ff3d3d;
+  animation: fadeIn 2s;
+}
+
+.live-tag {
+  display: inline-block;
+  background-color: #ff3d3d;
+  color: white;
+  padding: 4px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+.live-banner h1 {
+  font-size: 36px;
+  color: white;
+  margin: 15px 0;
+}
+
+.versus {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+.versus div {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.versus .vs {
+  color: #ff3d3d;
+  font-size: 34px;
+  animation: pulse 1.5s infinite;
+}
+
+.versus .team-emoji {
+  font-size: 60px;
+}
+
+.button {
+  display: inline-block;
+  background-color: #ffb400;
+  color: #0b0c10;
+  padding: 12px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.button:hover {
+  background-color: white;
+  box-shadow: 0 0 20px #ffb400;
+  transform: scale(1.08);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes blink {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+@keyframes pulse {
+  0%   { transform: scale(1); }
+  50%  { transform: scale(1.3); }
+  100% { transform: scale(1); }
+}
+
+@keyframes grow {
+  from { width: 0; }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.game {
+  width: 230px;
+  height: 200px;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: white;
+  transition: 0.3s;
+}
+
+.game:hover {
+  transform: translateY(-8px) rotate(-1deg);
+  box-shadow: 0 10px 25px rgba(255, 180, 0, 0.4);
+}
+
+.game .big {
+  font-size: 50px;
+}
+
+.game h3 {
+  font-size: 20px;
+}
+
+.game p {
+  font-size: 13px;
+}
+
+.red    { background-color: #b71c1c; }
+.blue   { background-color: #0d47a1; }
+.green  { background-color: #1b5e20; }
+.purple { background-color: #4a148c; }
+
+.match {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 15px;
+  background-color: #14151c;
+  border-radius: 8px;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  transition: 0.3s;
+}
+
+.match:hover {
+  background-color: #23242e;
+  transform: translateX(10px);
+}
+
+.date-box {
+  background-color: #ffb400;
+  color: #0b0c10;
+  text-align: center;
+  padding: 8px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  min-width: 70px;
+}
+
+.match .info {
+  flex: 1;
+  min-width: 180px;
+}
+
+.match .info h3 {
+  color: white;
+  font-size: 18px;
+}
+
+.match .info p {
+  font-size: 13px;
+  color: #999;
+}
+
+.prize {
+  color: #ffb400;
+  font-weight: bold;
+}
+
+.table-box {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #14151c;
+}
+
+th {
+  background-color: #ffb400;
+  color: #0b0c10;
+  padding: 12px;
+  text-align: left;
+}
+
+td {
+  padding: 12px;
+  border-bottom: 1px solid #2a2b36;
+}
+
+tr:hover td {
+  background-color: #23242e;
+}
+
+.win  { color: #4caf50; font-weight: bold; }
+.lose { color: #ff3d3d; font-weight: bold; }
+.gold   { color: #ffd700; font-weight: bold; }
+.silver { color: #c0c0c0; font-weight: bold; }
+.bronze { color: #cd7f32; font-weight: bold; }
+
+.player {
+  width: 240px;
+  background-color: #14151c;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border-top: 4px solid #ffb400;
+  transition: 0.3s;
+}
+
+.player:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(255, 180, 0, 0.3);
+}
+
+.player .face {
+  font-size: 55px;
+}
+
+.player h3 {
+  color: white;
+}
+
+.player .role {
+  font-size: 13px;
+  color: #999;
+  margin-bottom: 12px;
+}
+
+.stat {
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.bar {
+  background-color: #2a2b36;
+  height: 8px;
+  border-radius: 5px;
+  margin-top: 3px;
+}
+
+.bar div {
+  background-color: #ffb400;
+  height: 8px;
+  border-radius: 5px;
+  animation: grow 2s;
+}
+
+.news-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.news-big {
+  flex: 2;
+  min-width: 280px;
+  background-color: #1d1020;
+  border-radius: 12px;
+  padding: 30px;
+  border-bottom: 4px solid #ff3d3d;
+  transition: 0.3s;
+}
+
+.news-small {
+  flex: 1;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.news-small div {
+  background-color: #14151c;
+  border-radius: 12px;
+  padding: 18px;
+  border-bottom: 4px solid #ffb400;
+  transition: 0.3s;
+}
+
+.news-big:hover,
+.news-small div:hover {
+  transform: translateY(-5px);
+}
+
+.news-big h3 {
+  font-size: 24px;
+  color: white;
+  margin-bottom: 8px;
+}
+
+.news-small h3 {
+  font-size: 16px;
+  color: white;
+}
+
+.date {
+  font-size: 12px;
+  color: #999;
+}
+
+footer {
+  background-color: #14151c;
+  text-align: center;
+  padding: 20px;
+  border-top: 2px solid #ffb400;
+}
+
+@media (max-width: 800px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+    border-right: none;
+    border-bottom: 2px solid #ffb400;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .brand {
+    margin-bottom: 10px;
+  }
+
+  .sidebar a.link {
+    display: inline-block;
+    padding: 8px 10px;
+    font-size: 14px;
+  }
+
+  .sidebar a.link:hover {
+    padding-left: 10px;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .live-banner h1 {
+    font-size: 26px;
+  }
+
+  .game,
+  .player {
+    width: 100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <a class="brand" href="#home">⚡ ArenaX</a>
+  <a class="link" href="#home">🏠 Home</a>
+  <a class="link" href="#games">🎮 Games</a>
+  <a class="link" href="#schedule">📅 Schedule</a>
+  <a class="link" href="#teams">🛡️ Teams</a>
+  <a class="link" href="#players">👤 Players</a>
+  <a class="link" href="#leaderboard">🏆 Leaderboard</a>
+  <a class="link" href="#news">📰 News</a>
+</div>
+
+<div class="main">
+
+<div class="live-banner" id="home">
+  <span class="live-tag">● LIVE NOW</span>
+  <h1>Grand Finals: Winter Showdown</h1>
+  <div class="versus">
+    <div><span class="team-emoji">🐺</span><br>Night Wolves</div>
+    <div class="vs">VS</div>
+    <div><span class="team-emoji">🐉</span><br>Dragon Clan</div>
+  </div>
+  <a class="button" href="#schedule">See Full Schedule</a>
+</div>
+
+<section id="games">
+  <h2>Game Profiles</h2>
+  <div class="container">
+    <div class="game red">
+      <div class="big">🔫</div>
+      <h3>Strike Arena</h3>
+      <p>5v5 tactical shooter</p>
+    </div>
+    <div class="game blue">
+      <div class="big">⚔️</div>
+      <h3>Realm Legends</h3>
+      <p>Team hero battle game</p>
+    </div>
+    <div class="game green">
+      <div class="big">🏎️</div>
+      <h3>Turbo Drift</h3>
+      <p>Online racing game</p>
+    </div>
+    <div class="game purple">
+      <div class="big">🪂</div>
+      <h3>Last Zone</h3>
+      <p>Battle royale for squads</p>
+    </div>
+  </div>
+</section>
+
+<section id="schedule">
+  <h2>Tournament Schedule</h2>
+
+  <div class="match">
+    <div class="date-box">24<br>OCT</div>
+    <div class="info">
+      <h3>Winter Showdown Finals</h3>
+      <p>Strike Arena | Online</p>
+    </div>
+    <div class="prize">₹5,00,000</div>
+  </div>
+
+  <div class="match">
+    <div class="date-box">02<br>NOV</div>
+    <div class="info">
+      <h3>Realm Cup</h3>
+      <p>Realm Legends | Hyderabad</p>
+    </div>
+    <div class="prize">₹3,00,000</div>
+  </div>
+
+  <div class="match">
+    <div class="date-box">15<br>NOV</div>
+    <div class="info">
+      <h3>Drift Masters</h3>
+      <p>Turbo Drift | Online</p>
+    </div>
+    <div class="prize">₹1,50,000</div>
+  </div>
+
+  <div class="match">
+    <div class="date-box">28<br>NOV</div>
+    <div class="info">
+      <h3>Last Zone Finals</h3>
+      <p>Last Zone | Bengaluru</p>
+    </div>
+    <div class="prize">₹10,00,000</div>
+  </div>
+</section>
+
+<section id="teams">
+  <h2>Team Standings</h2>
+  <div class="table-box">
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Team</th>
+        <th>Game</th>
+        <th>Played</th>
+        <th>Won</th>
+        <th>Lost</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td class="gold">1</td>
+        <td>🐺 Night Wolves</td>
+        <td>Strike Arena</td>
+        <td>22</td>
+        <td class="win">18</td>
+        <td class="lose">4</td>
+        <td>54</td>
+      </tr>
+      <tr>
+        <td class="silver">2</td>
+        <td>🐉 Dragon Clan</td>
+        <td>Realm Legends</td>
+        <td>21</td>
+        <td class="win">15</td>
+        <td class="lose">6</td>
+        <td>45</td>
+      </tr>
+      <tr>
+        <td class="bronze">3</td>
+        <td>🦅 Sky Hawks</td>
+        <td>Last Zone</td>
+        <td>20</td>
+        <td class="win">13</td>
+        <td class="lose">7</td>
+        <td>39</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>🦂 Red Scorpions</td>
+        <td>Turbo Drift</td>
+        <td>19</td>
+        <td class="win">10</td>
+        <td class="lose">9</td>
+        <td>30</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section id="players">
+  <h2>Player Profiles</h2>
+  <div class="container">
+    <div class="player">
+      <div class="face">🧑‍💻</div>
+      <h3>ShadowX</h3>
+      <p class="role">Night Wolves | Entry Fragger</p>
+      <div class="stat">Aim 92%<div class="bar"><div style="width: 92%;"></div></div></div>
+      <div class="stat">Teamwork 80%<div class="bar"><div style="width: 80%;"></div></div></div>
+    </div>
+    <div class="player">
+      <div class="face">👩‍💻</div>
+      <h3>Nova</h3>
+      <p class="role">Dragon Clan | Mage</p>
+      <div class="stat">Aim 85%<div class="bar"><div style="width: 85%;"></div></div></div>
+      <div class="stat">Teamwork 90%<div class="bar"><div style="width: 90%;"></div></div></div>
+    </div>
+    <div class="player">
+      <div class="face">🧑‍🚀</div>
+      <h3>Blaze</h3>
+      <p class="role">Sky Hawks | Squad Leader</p>
+      <div class="stat">Aim 78%<div class="bar"><div style="width: 78%;"></div></div></div>
+      <div class="stat">Teamwork 95%<div class="bar"><div style="width: 95%;"></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="leaderboard">
+  <h2>Player Leaderboard</h2>
+  <div class="table-box">
+    <table>
+      <tr>
+        <th>Rank</th>
+        <th>Player</th>
+        <th>Team</th>
+        <th>Kills</th>
+        <th>Points</th>
+      </tr>
+      <tr>
+        <td class="gold">🥇 1</td>
+        <td>ShadowX</td>
+        <td>Night Wolves</td>
+        <td>412</td>
+        <td>9,850</td>
+      </tr>
+      <tr>
+        <td class="silver">🥈 2</td>
+        <td>Nova</td>
+        <td>Dragon Clan</td>
+        <td>380</td>
+        <td>9,420</td>
+      </tr>
+      <tr>
+        <td class="bronze">🥉 3</td>
+        <td>Blaze</td>
+        <td>Sky Hawks</td>
+        <td>355</td>
+        <td>9,100</td>
+      </tr>
+      <tr>
+        <td>4</td>
+        <td>Ghost</td>
+        <td>Night Wolves</td>
+        <td>340</td>
+        <td>8,760</td>
+      </tr>
+      <tr>
+        <td>5</td>
+        <td>Viper</td>
+        <td>Dragon Clan</td>
+        <td>321</td>
+        <td>8,300</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<section id="news">
+  <h2>Gaming News</h2>
+  <div class="news-container">
+    <div class="news-big">
+      <span class="date">24 Oct 2026</span>
+      <h3>Night Wolves and Dragon Clan meet in the Winter Showdown finals</h3>
+      <p>Both teams won every match in the playoffs. The winner takes home the ₹5 lakh prize.</p>
+    </div>
+    <div class="news-small">
+      <div>
+        <span class="date">22 Oct 2026</span>
+        <h3>Realm Legends adds two new heroes</h3>
+      </div>
+      <div>
+        <span class="date">20 Oct 2026</span>
+        <h3>Last Zone Finals prize raised to ₹10 lakh</h3>
+      </div>
+      <div>
+        <span class="date">18 Oct 2026</span>
+        <h3>College esports league opens registrations</h3>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 ArenaX Esports. All rights reserved.</p>
+</footer>
+
+</div>
+
+</body>
+</html>
